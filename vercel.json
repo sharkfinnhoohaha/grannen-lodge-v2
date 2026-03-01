@@ -1,0 +1,3 @@
+{
+  "buildCommand": "npx tinacms build || true && next build"
+}
