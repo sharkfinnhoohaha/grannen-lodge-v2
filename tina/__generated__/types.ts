@@ -165,6 +165,13 @@ export type CollectionDocumentsArgs = {
 
 export type DocumentNode = Page | Folder;
 
+export type PageTheme = {
+  __typename?: 'PageTheme';
+  primaryColor?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  heroTitleSize?: Maybe<Scalars['String']['output']>;
+};
+
 export type PageOfferings = {
   __typename?: 'PageOfferings';
   title?: Maybe<Scalars['String']['output']>;
@@ -177,8 +184,10 @@ export type Page = Node & Document & {
   heroTagline?: Maybe<Scalars['String']['output']>;
   heroTitle?: Maybe<Scalars['String']['output']>;
   heroImage?: Maybe<Scalars['String']['output']>;
+  experienceImage?: Maybe<Scalars['String']['output']>;
   experienceTitle?: Maybe<Scalars['String']['output']>;
   experienceText?: Maybe<Scalars['String']['output']>;
+  theme?: Maybe<PageTheme>;
   offerings?: Maybe<Array<Maybe<PageOfferings>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -199,6 +208,12 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type PageThemeFilter = {
+  primaryColor?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  heroTitleSize?: InputMaybe<StringFilter>;
+};
+
 export type PageOfferingsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
@@ -209,8 +224,10 @@ export type PageFilter = {
   heroTagline?: InputMaybe<StringFilter>;
   heroTitle?: InputMaybe<StringFilter>;
   heroImage?: InputMaybe<ImageFilter>;
+  experienceImage?: InputMaybe<ImageFilter>;
   experienceTitle?: InputMaybe<StringFilter>;
   experienceText?: InputMaybe<StringFilter>;
+  theme?: InputMaybe<PageThemeFilter>;
   offerings?: InputMaybe<PageOfferingsFilter>;
 };
 
@@ -292,6 +309,12 @@ export type DocumentMutation = {
   page?: InputMaybe<PageMutation>;
 };
 
+export type PageThemeMutation = {
+  primaryColor?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  heroTitleSize?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type PageOfferingsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -302,19 +325,21 @@ export type PageMutation = {
   heroTagline?: InputMaybe<Scalars['String']['input']>;
   heroTitle?: InputMaybe<Scalars['String']['input']>;
   heroImage?: InputMaybe<Scalars['String']['input']>;
+  experienceImage?: InputMaybe<Scalars['String']['input']>;
   experienceTitle?: InputMaybe<Scalars['String']['input']>;
   experienceText?: InputMaybe<Scalars['String']['input']>;
+  theme?: InputMaybe<PageThemeMutation>;
   offerings?: InputMaybe<Array<InputMaybe<PageOfferingsMutation>>>;
 };
 
-export type PagePartsFragment = { __typename: 'Page', heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null };
+export type PagePartsFragment = { __typename: 'Page', heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, theme?: { __typename: 'PageTheme', primaryColor?: string | null, backgroundColor?: string | null, heroTitleSize?: string | null } | null, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null };
 
 export type PageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, theme?: { __typename: 'PageTheme', primaryColor?: string | null, backgroundColor?: string | null, heroTitleSize?: string | null } | null, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -326,7 +351,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, heroTagline?: string | null, heroTitle?: string | null, heroImage?: string | null, experienceImage?: string | null, experienceTitle?: string | null, experienceText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, theme?: { __typename: 'PageTheme', primaryColor?: string | null, backgroundColor?: string | null, heroTitleSize?: string | null } | null, offerings?: Array<{ __typename: 'PageOfferings', title?: string | null, description?: string | null, image?: string | null } | null> | null } | null } | null> | null } };
 
 export const PagePartsFragmentDoc = gql`
     fragment PageParts on Page {
@@ -334,8 +359,15 @@ export const PagePartsFragmentDoc = gql`
   heroTagline
   heroTitle
   heroImage
+  experienceImage
   experienceTitle
   experienceText
+  theme {
+    __typename
+    primaryColor
+    backgroundColor
+    heroTitleSize
+  }
   offerings {
     __typename
     title
@@ -457,7 +489,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "https://content.tinajs.io/2.1/content/7148f33e-0420-4a7e-8be6-ec6066254fc5/github/main",
         queries,
       })
     )
