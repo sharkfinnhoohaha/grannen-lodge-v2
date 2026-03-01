@@ -87,12 +87,6 @@ type Collection {
 
 union DocumentNode = Page | Folder
 
-type PageTheme {
-  primaryColor: String
-  backgroundColor: String
-  heroTitleSize: String
-}
-
 type PageOfferings {
   title: String
   description: String
@@ -103,10 +97,8 @@ type Page implements Node & Document {
   heroTagline: String
   heroTitle: String
   heroImage: String
-  experienceImage: String
   experienceTitle: String
   experienceText: String
-  theme: PageTheme
   offerings: [PageOfferings]
   id: ID!
   _sys: SystemInfo!
@@ -127,12 +119,6 @@ input ImageFilter {
   in: [String]
 }
 
-input PageThemeFilter {
-  primaryColor: StringFilter
-  backgroundColor: StringFilter
-  heroTitleSize: StringFilter
-}
-
 input PageOfferingsFilter {
   title: StringFilter
   description: StringFilter
@@ -143,10 +129,8 @@ input PageFilter {
   heroTagline: StringFilter
   heroTitle: StringFilter
   heroImage: ImageFilter
-  experienceImage: ImageFilter
   experienceTitle: StringFilter
   experienceText: StringFilter
-  theme: PageThemeFilter
   offerings: PageOfferingsFilter
 }
 
@@ -180,12 +164,6 @@ input DocumentMutation {
   page: PageMutation
 }
 
-input PageThemeMutation {
-  primaryColor: String
-  backgroundColor: String
-  heroTitleSize: String
-}
-
 input PageOfferingsMutation {
   title: String
   description: String
@@ -196,10 +174,8 @@ input PageMutation {
   heroTagline: String
   heroTitle: String
   heroImage: String
-  experienceImage: String
   experienceTitle: String
   experienceText: String
-  theme: PageThemeMutation
   offerings: [PageOfferingsMutation]
 }
 

@@ -3,15 +3,8 @@ fragment PageParts on Page {
   heroTagline
   heroTitle
   heroImage
-  experienceImage
   experienceTitle
   experienceText
-  theme {
-    __typename
-    primaryColor
-    backgroundColor
-    heroTitleSize
-  }
   offerings {
     __typename
     title
