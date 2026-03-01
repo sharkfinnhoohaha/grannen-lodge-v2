@@ -1,0 +1,42 @@
+{
+  "schema": {
+    "collections": [
+      {
+        "name": "page",
+        "label": "Pages",
+        "path": "content/pages",
+        "format": "json",
+        "fields": [
+          { "type": "string", "name": "heroTagline", "label": "Hero Tagline" },
+          { "type": "string", "name": "heroTitle", "label": "Hero Title" },
+          { "type": "image", "name": "heroImage", "label": "Hero Image" },
+          { "type": "string", "name": "experienceTitle", "label": "Experience Title" },
+          { "type": "string", "name": "experienceText", "label": "Experience Text", "ui": { "component": "textarea" } },
+          { "type": "image", "name": "experienceImage", "label": "Experience Image" },
+          {
+            "type": "object",
+            "name": "theme",
+            "label": "Theme",
+            "fields": [
+              { "type": "string", "name": "primaryColor", "label": "Primary Color" },
+              { "type": "string", "name": "backgroundColor", "label": "Background Color" },
+              { "type": "string", "name": "heroTitleSize", "label": "Hero Title Size" }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "offerings",
+            "label": "Offerings",
+            "list": true,
+            "fields": [
+              { "type": "string", "name": "title", "label": "Title" },
+              { "type": "string", "name": "description", "label": "Description" },
+              { "type": "image", "name": "image", "label": "Image" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "version": { "full": "3.5.1", "major": "3", "minor": "5", "patch": "1" }
+}
