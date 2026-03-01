@@ -1,0 +1,14 @@
+fragment PageParts on Page {
+  __typename
+  heroTagline
+  heroTitle
+  heroImage
+  experienceTitle
+  experienceText
+  offerings {
+    __typename
+    title
+    description
+    image
+  }
+}
